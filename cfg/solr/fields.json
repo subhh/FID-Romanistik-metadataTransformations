@@ -1,0 +1,8 @@
+[
+    {
+      "name":"identifier",
+      "type":"string",
+      "indexed":true,
+      "stored":true
+    }
+]

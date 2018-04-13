@@ -1,0 +1,46 @@
+[
+  {
+    "op": "core/column-addition",
+    "description": "Create column id at index 2 based on column dc:identifier using expression grel:value.replace(\"https://dialnet.unirioja.es/servlet/oaiart?codigo=\",\"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "isBlank(value)",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "Record - header - identifier",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Record - header - identifier"
+        }
+      ]
+    },
+    "newColumnName": "id",
+    "columnInsertIndex": 2,
+    "baseColumnName": "dc:identifier",
+    "expression": "grel:value.replace(\"https://dialnet.unirioja.es/servlet/oaites?codigo=\",\"\")",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column id to position 0",
+    "columnName": "id",
+    "index": 0
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Record - header - identifier",
+    "columnName": "Record - header - identifier"
+  }
+]
