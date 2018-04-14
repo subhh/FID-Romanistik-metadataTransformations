@@ -60,12 +60,6 @@
   },
   {
     "op": "core/column-rename",
-    "description": "Rename column Record - metadata - oai_dc:dc - dc:source to dc:source",
-    "oldColumnName": "Record - metadata - oai_dc:dc - dc:source",
-    "newColumnName": "dc:source"
-  },
-  {
-    "op": "core/column-rename",
     "description": "Rename column Record - metadata - oai_dc:dc - dc:description to dc:description",
     "oldColumnName": "Record - metadata - oai_dc:dc - dc:description",
     "newColumnName": "dc:description"
