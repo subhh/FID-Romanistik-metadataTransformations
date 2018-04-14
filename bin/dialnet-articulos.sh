@@ -15,7 +15,7 @@ log_dir="$(readlink -f ../log)"
 
 # config
 source="dialnet-tesis" # name of OpenRefine project and value for Solr field "collection"
-oai_url=" http://dialnet.unirioja.es/oai/OAIHandler" # base url of OAI-PMH endpoint
+oai_url="http://dialnet.unirioja.es/oai/OAIHandler" # base url of OAI-PMH endpoint
 ram="8192M" # highest OpenRefine memory load is below 2048M
 recordpath+=() # select /Records/Record/ (including /Records/Record/header)
 separator="%E2%90%9F" # multiple values are separated by unicode character unit separator (U+241F)
