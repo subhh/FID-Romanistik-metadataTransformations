@@ -13,13 +13,14 @@ user="$(who | head -n1 | awk '{print $1;}')"
 # declare download URLs
 openrefine_server_URL="https://github.com/OpenRefine/OpenRefine/releases/download/2.8/openrefine-linux-2.8.tar.gz"
 openrefine_client_URL="https://github.com/opencultureconsulting/openrefine-client/releases/download/v0.3.4/openrefine-client_0-3-4_linux-64bit"
-metha_URL="https://github.com/miku/metha/releases/download/v0.1.24/metha_0.1.24_amd64.deb"
-solr_URL="http://archive.apache.org/dist/lucene/solr/7.1.0/solr-7.1.0.tgz"
+metha_URL="https://github.com/miku/metha/releases/download/v0.1.29/metha_0.1.29_amd64.deb"
+solr_URL="https://archive.apache.org/dist/lucene/solr/7.3.1/solr-7.3.1.tgz"
 
 # create directories
 sudo -u $(who | awk '{print $1}') mkdir -p data
 sudo -u $(who | awk '{print $1}') mkdir -p data/01_oai
 sudo -u $(who | awk '{print $1}') mkdir -p data/02_transformed
+sudo -u $(who | awk '{print $1}') mkdir -p data/03_combined
 sudo -u $(who | awk '{print $1}') mkdir -p data/solr
 sudo -u $(who | awk '{print $1}') mkdir -p log
 sudo -u $(who | awk '{print $1}') mkdir -p opt
@@ -34,6 +35,20 @@ fi
 curl="$(which curl 2> /dev/null)"
 if [ -z "$curl" ] ; then
     apt-get -qq update && apt-get -qq --yes install curl
+fi
+
+# install jq
+jq="$(which jq 2> /dev/null)"
+if [ -z "$jq" ] ; then
+    apt-get -qq update && apt-get -qq --yes install jq
+fi
+
+# install metha
+metha="$(which metha-sync 2> /dev/null)"
+if [ -z "$metha" ] ; then
+    wget $metha_URL
+    apt-get install ./$(basename $metha_URL)
+    rm $(basename $metha_URL)
 fi
 
 # install metha

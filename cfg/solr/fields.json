@@ -1,8 +1,35 @@
 [
     {
-      "name":"identifier",
+      "name":"_root_",
+      "type":"string",
+      "docValues":false,
+      "indexed":true,
+      "stored":false
+    },
+    {
+      "name":"_text_",
+      "type":"text_general",
+      "multiValued":true,
+      "indexed":true,
+      "stored":false
+    },
+    {
+      "name":"_version_",
+      "type":"plong",
+      "indexed":false,
+      "stored":false
+    },
+    {
+      "name":"id",
       "type":"string",
       "indexed":true,
+      "required":true,
       "stored":true
+    },
+    {
+      "name":"source",
+      "type":"string",
+      "indexed":true,
+      "stored":false
     }
 ]

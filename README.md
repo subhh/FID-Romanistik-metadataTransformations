@@ -8,7 +8,7 @@ See upstream git repo [HOS-MetadataTransformations](https://github.com/subhh/HOS
 
 ## Installation
 
-tested with [Ubuntu 16.04 LTS](https://www.ubuntu.com/download/desktop)
+tested with [Ubuntu 16.04 LTS](http://releases.ubuntu.com/16.04/) and [Ubuntu 18.04 LTS](http://releases.ubuntu.com/18.04/)
 
 install git:
 
@@ -23,7 +23,7 @@ git clone https://github.com/subhh/FID-Romanistik-MetadataTransformations.git
 cd FID-Romanistik-MetadataTransformations
 ```
 
-install [default-jre](https://packages.ubuntu.com/de/xenial/default-jre), [curl](https://curl.haxx.se/), [metha](https://github.com/miku/metha), [OpenRefine](http://openrefine.org/), [openrefine-client](https://github.com/opencultureconsulting/openrefine-client) and [Solr](http://lucene.apache.org/solr/):
+install [openjdk-8-jre-headless](https://packages.ubuntu.com/search?keywords=openjdk-8-jre-headless), [curl](https://curl.haxx.se/), [jq](https://stedolan.github.io/jq/), [metha 1.29](https://github.com/miku/metha), [OpenRefine 2.8](http://openrefine.org/), [openrefine-client 0.3.4](https://github.com/opencultureconsulting/openrefine-client) and [Solr 7.3.1](http://lucene.apache.org/solr/):
 
 ```
 sudo ./install.sh
@@ -43,21 +43,21 @@ Data will be available after first run at:
 * Solr browse: <http://localhost:8983/solr/fid/browse>
 * OpenRefine: <http://localhost:3333>
 
-Run workflow with data source "dialnet-tesis" and load data into local Solr and local OpenRefine service
+Run workflow with data source "dialnet-tesis" and load data into local Solr (-s) and local OpenRefine service (-d)
 
 ```
-bin/dialnet-tesis.sh
+bin/dialnet-tesis.sh -s http://localhost:8983/solr/fid -d http://localhost:3333
 ```
 
-Run workflow with all data sources in parallel and load data into local Solr and local OpenRefine service:
+Run workflow with all data sources in parallel and load data into local Solr (-s) and local OpenRefine service (-d):
 
 ```
-./run.sh
+./run.sh -s http://localhost:8983/solr/fid -d http://localhost:3333
 ```
 
 Run workflow with all data sources and load data into external Solr core
 
 ```
-./run.sh -s "http://hosdev.sub.uni-hamburg.de:8983/solr/HOS_MASTER"
-
+./run.sh -s "http://..."
 ```
+

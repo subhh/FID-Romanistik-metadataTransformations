@@ -1,0 +1,10 @@
+[
+  {
+    "op": "core/column-reorder",
+    "description": "Reorder columns",
+    "columnNames": [
+      "id",
+      "source"
+    ]
+  }
+]
