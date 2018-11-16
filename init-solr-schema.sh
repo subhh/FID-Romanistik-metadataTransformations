@@ -7,16 +7,16 @@ function usage () {
 Usage: ./init-solr-schema.sh [-s SOLRURL]
 
 == options ==
-    -s SOLRURL       URL to Solr core (default: http://localhost:8983/solr/fid)
+    -s SOLRURL       URL to Solr core (default: http://localhost:8983/solr/fid-rom)
 
 == example ==
-./init-solr-schema.sh -s http://localhost:8983/solr/fid
+./init-solr-schema.sh -s http://localhost:8983/solr/fid-rom
 EOF
    exit 1
 }
 
 # defaults
-solr_url="http://localhost:8983/solr/fid"
+solr_url="http://localhost:8983/solr/fid-rom"
 
 # get user input
 options="s:h"

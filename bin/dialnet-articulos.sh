@@ -34,7 +34,7 @@ Usage: ./${codename}.sh [-p PORT] [-s SOLRURL] [-d OPENREFINEURL]
     -d OPENREFINEURL ingest data to external OpenRefine service
 
 == example ==
-./${codename}.sh -p 3334 -s http://localhost:8983/solr/fid -d http://localhost:3333
+./${codename}.sh -p 3334 -s http://localhost:8983/solr/fid-rom -d http://localhost:3333
 EOF
    exit 1
 }

@@ -117,5 +117,5 @@ fi
 sudo /etc/init.d/solr status
 
 # create Solr core
-echo "create Solr core fid..."
-sudo -u solr $(grep SOLR_INSTALL_DIR= /etc/init.d/solr | sed 's/\"//g' | sed 's/SOLR_INSTALL_DIR=//')/bin/solr create -c fid
+echo "create Solr core fid-rom..."
+sudo -u solr $(grep SOLR_INSTALL_DIR= /etc/init.d/solr | sed 's/\"//g' | sed 's/SOLR_INSTALL_DIR=//')/bin/solr create -c fid-rom

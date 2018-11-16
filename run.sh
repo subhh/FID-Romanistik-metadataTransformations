@@ -25,7 +25,7 @@ Usage: ./run.sh [-s SOLRURL] [-d OPENREFINEURL]
     -d OPENREFINEURL ingest data to external OpenRefine service
 
 == example ==
-./run.sh -s http://localhost:8983/solr/fid -d http://localhost:3333
+./run.sh -s http://localhost:8983/solr/fid-rom -d http://localhost:3333
 EOF
    exit 1
 }
@@ -181,7 +181,7 @@ if [ -n "$solr_url" ]; then
   curl -sS "${solr_url}/update?commit=true" -H "Content-Type: application/json" --data-binary '{ "delete": { "query": "*:*" } }' | jq .responseHeader
   echo ""
   echo "load new data..."
-  curl --progress-bar "${solr_url}/update/csv?commit=true&optimize=true&separator=%09&literal.source=all&split=true${multivalue_config}" --data-binary @- -H 'Content-type:text/plain; charset=utf-8' < ${data_dir}/03_combined/all_${date}.tsv | jq .responseHeader
+  curl --progress-bar "${solr_url}/update/csv?commit=true&optimize=true&separator=%09&literal.source=fid-rom&split=true${multivalue_config}" --data-binary @- -H 'Content-type:text/plain; charset=utf-8' < ${data_dir}/03_combined/all_${date}.tsv | jq .responseHeader
   echo ""
 fi
 
@@ -194,11 +194,11 @@ if [ -n "$openrefine_url" ]; then
   echo ""
   echo "starting time: $(date --date=@${checkpointdate[$((checkpoints + 1))]})"
   echo ""
-  echo "delete existing project all_live..."
-  ${openrefine_client} -H ${external_host} -P ${external_port} --delete "all_live"
+  echo "delete existing project fid-rom_live..."
+  ${openrefine_client} -H ${external_host} -P ${external_port} --delete "fid-rom_live"
   echo ""
-  echo "create new project all_live..."
-  ${openrefine_client} -H ${external_host} -P ${external_port} --create "${data_dir}/03_combined/all_${date}.tsv" --encoding=UTF-8 --projectName=all_live
+  echo "create new project fid-rom_live..."
+  ${openrefine_client} -H ${external_host} -P ${external_port} --create "${data_dir}/03_combined/all_${date}.tsv" --encoding=UTF-8 --projectName=fid-rom_live
   echo ""
 fi
 
